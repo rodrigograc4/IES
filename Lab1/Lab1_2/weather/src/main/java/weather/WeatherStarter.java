@@ -31,9 +31,10 @@ public class WeatherStarter {
             if (forecast != null) {
                 var firstDay = forecast.getData().listIterator().next();
 
-                System.out.printf( " for %s is %4.1f %n",
+                System.out.printf( " for %s is %4.1f in %s %n",
                         firstDay.getForecastDate(),
-                        Double.parseDouble(firstDay.getTMax()));
+                        Double.parseDouble(firstDay.getTMax()),
+                        forecast.getCountry());
             } else {
                 System.out.println( "No results for this request!");
             }
