@@ -31,7 +31,7 @@ public class WeatherStarter {
             if (forecast != null) {
                 var firstDay = forecast.getData().listIterator().next();
 
-                System.out.printf( " for %s is %4.1f in %s %n",
+                System.out.printf( "On the day, %s, the max temperature expected is %4.1fº Celsius in %s %n",
                         firstDay.getForecastDate(),
                         Double.parseDouble(firstDay.getTMax()),
                         forecast.getCountry());
