@@ -1,4 +1,4 @@
-# Lab 1.1 Notes
+# Lab 2.1 Notes
 
 ## What is Java Servlet?
 

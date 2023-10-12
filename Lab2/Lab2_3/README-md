@@ -1,0 +1,52 @@
+# Lab 2.3 Notes
+
+## What is SpringBoot?
+
+O Spring Boot é uma plataforma de desenvolvimento de aplicativos rápidos construída em cima do popular Framework Spring. Ao adotar escolhas opinativas por padrão (por exemplo, assume opções de configuração comuns sem a necessidade de especificar tudo), o Spring Boot é uma adição de "convenção sobre configuração" à plataforma Spring, útil para começar com o mínimo esforço e criar aplicativos autônomos de alta qualidade.
+
+Em resumo, o Spring Boot reduz a configuração demorada, pois utiliza um conjunto de configurações padrão para o Spring (precisamos apenas ajustar algumas coisas). Basicamente, o framework Spring oferece bibliotecas para conexão com banco de dados, gerenciamento de autenticação e criação de APIs RESTful.
+
+## Spring Initializr
+
+Essa ferramenta web nos permite criar um projeto Spring Boot baseado no Maven para uma aplicação web. Podemos adicionar manualmente as dependências do projeto (por exemplo, a dependência do Spring Web), pois isso simplifica a configuração do arquivo pom.xml.
+
+O projeto Maven gerado pelo Spring Initializr também inclui um script de Maven Wrapper (.mnwv). Isso é uma ótima opção para projetos que requerem uma versão específica do Maven e para usuários que não desejam instalar o Maven, pois podem simplesmente usar o script específico do projeto.
+
+**Configuração do Maven Wrapper:**
+
+Execute o seguinte comando na pasta principal do projeto (especificação opcional da versão do Maven):
+
+```mvn -N io.takari:maven:wrapper (-Dmaven=<versão>)```
+
+Observe que estamos utilizando o plugin Takari Maven disponível em: https://github.com/takari/takari-maven-plugin
+
+Após a execução deste comando, mais arquivos e diretórios serão criados no projeto:
+mvnw: é um script executável de shell Unix usado no lugar de uma instalação completa do Maven.
+mvnw.cmd: é a versão em lote do script acima.
+mvn: é a pasta oculta que contém a biblioteca Java do Maven Wrapper e seu arquivo de propriedades.
+
+**Construir e executar o programa:**
+
+Existem duas opções para executar o projeto baseado no Maven do Spring Boot:
+
+```mvn install -DskipTests && java -jar target\webapp1-0.0.1-SNAPSHOT.jar```
+
+ou
+
+```./mvnw spring-boot:run```
+
+Se acessarmos http://localhost:8080/, obteremos o seguinte erro:
+
+>Whitelabel Error Page
+>This application has no explicit mapping for /error, so you are seeing this as a fallback.
+
+>Sat Oct 10 18:54:05 WEST 2023
+>There was an unexpected error (type=Not Found, status=404).
+
+Por padrão, as aplicações Spring Boot iniciam com o servidor Tomcat incorporado na porta 8080. Podemos alterar a porta padrão do servidor incorporado para qualquer outra porta usando uma das técnicas a seguir.
+
+Alterando a porta do servidor no arquivo application.properties: server.port={porta}
+Alterando a porta do servidor no arquivo application.yml: server: port: {porta}
+O arquivo application.properties pode ser encontrado dentro da pasta src/main/resources.
+
+Essas são as etapas mais simples para alterar a porta do servidor, embora também seja possível alterá-la programaticamente ou a partir da linha de comando.
